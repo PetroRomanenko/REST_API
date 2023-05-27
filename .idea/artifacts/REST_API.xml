@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="REST_API">
+    <output-path>$PROJECT_DIR$/out/artifacts/REST_API</output-path>
+    <root id="archive" name="REST_API.war">
+      <element id="artifact" artifact-name="REST_API:Web exploded" />
+    </root>
+  </artifact>
+</component>
