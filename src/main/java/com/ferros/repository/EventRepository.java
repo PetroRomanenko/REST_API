@@ -1,4 +1,6 @@
 package com.ferros.repository;
 
-public interface EventRepository extends GenericRepository{
+import com.ferros.model.Event;
+
+public interface EventRepository extends GenericRepository<Event,Integer> {
 }

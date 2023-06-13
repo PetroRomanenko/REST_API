@@ -3,13 +3,18 @@ package com.ferros.utils;
 import com.ferros.model.Event;
 import com.ferros.model.User;
 import com.ferros.model.File;
+import lombok.experimental.UtilityClass;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 
-
+@UtilityClass
 public class HibernateUtil {
+    private Session session;
+
+    private Transaction transaction;
 
     private static SessionFactory sessionFactory;
 
@@ -31,8 +36,35 @@ public class HibernateUtil {
         return configuration;
     }
 
-    public static Session getSession(){
+    public static Session openSession(){
         return getSessionFactory().openSession();
+    }
+
+    public Session getSession(){
+        return session;
+    }
+
+    public Transaction getTransaction(){
+        return transaction;
+    }
+
+    public Session openTransactionSession(){
+        session=openSession();
+        transaction=session.getTransaction();
+        return session;
+    }
+
+    private void closeSession() {
+        session.close();
+    }
+
+    public void closeTransactionSession() {
+        transaction.commit();
+        closeSession();
+    }
+
+    public static void shutdown() {
+        getSessionFactory().close();
     }
 
 

@@ -1,4 +1,6 @@
 package com.ferros.repository;
 
-public interface UserRepository extends GenericRepository{
+import com.ferros.model.User;
+
+public interface UserRepository extends GenericRepository<User,Integer> {
 }

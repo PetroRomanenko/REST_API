@@ -1,4 +1,6 @@
 package com.ferros.repository;
 
-public interface FileRepository  extends GenericRepository{
+import com.ferros.model.File;
+
+public interface FileRepository  extends GenericRepository<File,Integer> {
 }
